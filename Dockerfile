@@ -1,5 +1,5 @@
 
-FROM php:7.3.11-fpm-alpine3.10
+FROM php:7.4.0-alpine3.10
 
 LABEL maintainer="Thongchai Lim <limweb@hotmail.com>"
 
@@ -381,10 +381,11 @@ RUN if [ ${INSTALL_SWOOLE} = true ]; then \
   # Install Php Swoole Extension
   # pecl install -f swoole-4.4.6 \
   # &&  docker-php-ext-enable swoole \
+  # https://pecl.php.net/get/swoole-4.4.12.tgz
 
-  cd /tmp && wget https://pecl.php.net/get/swoole-4.4.7.tgz && \
-  tar zxvf swoole-4.4.7.tgz && \
-  cd swoole-4.4.7  && \
+  cd /tmp && wget https://pecl.php.net/get/swoole-4.4.12.tgz && \
+  tar zxvf swoole-4.4.12.tgz && \
+  cd swoole-4.4.12  && \
   phpize  && \
   ./configure  --enable-openssl && \
   make && make install && \
